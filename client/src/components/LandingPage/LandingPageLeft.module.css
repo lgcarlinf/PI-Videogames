@@ -1,0 +1,29 @@
+.left{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: black;
+}
+
+.img{
+    opacity: .6;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    animation: cambio;
+}
+
+ .fade {
+    opacity: 1;
+  } 
+
+ 
+  
+ .logo{
+     position: absolute;
+     top: 30px;
+     left: 50px;
+     width: 220px;
+     height: 100px;
+     z-index: 999;
+ }

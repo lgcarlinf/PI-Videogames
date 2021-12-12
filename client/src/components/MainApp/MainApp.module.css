@@ -1,0 +1,27 @@
+.containerMain{
+    position: relative;
+    display: flex;
+    
+}
+
+.sideBar{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1D1024;
+    width: 25%;
+    border: 1px solid black;
+    height: 100vh;
+}
+
+.main{
+    width: 75%;
+    border: 1px solid black;
+
+}
+
+.logoImg{
+    width: 140px;
+    height: 210px;
+}
