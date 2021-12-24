@@ -2,6 +2,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import { LandingPage } from '../components/LandingPage/LandingPage'
 import { MainApp } from '../components/MainApp/MainApp'
+import { Videogame } from '../components/Videogame/Videogame'
 
 
 export const AppRouter = () => {
@@ -9,6 +10,7 @@ export const AppRouter = () => {
         <Routes>
             <Route path='/' element={<LandingPage/>}></Route>
             <Route path='/videogame' element={<MainApp/>}></Route>
+            <Route path='/videogame/:id' element={<Videogame/>}></Route>
         </Routes>
     )
 }

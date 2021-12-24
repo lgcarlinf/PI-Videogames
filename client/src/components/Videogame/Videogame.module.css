@@ -1,0 +1,141 @@
+.containerPage{
+   
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-image: url('../../assets/background.jpg');
+    object-fit: cover;
+    background-size: contain;
+    background-repeat: repeat;
+   
+    
+
+}
+
+.btnBack{
+    color: white;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 28px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bolder;
+}
+
+.back{
+   padding: 0 10px; 
+}
+
+.imgCrown{
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.containerImg{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.imgVideogame{
+  height: 400px;
+  width: 50%;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+  object-fit: cover;
+}
+
+.imgPhrase{
+    display: block;
+    position: absolute;
+    right: 260px;
+    top: -50px;
+    width: 200px;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 2px 5px rgb(0, 0, 0));
+}
+
+.nameVideogame{
+    display: block;
+    position: absolute;
+    bottom: -90px;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 70px;
+    text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+.info,.description{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    align-items: flex-start;
+    color: white;
+}
+
+.info h2, .description h2{
+    display: block;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    border-left: 4px solid #6b54b6;
+    padding-left: 10px;
+}
+
+.numbers{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.numbers h4{
+    color: #6b54b6;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    filter: drop-shadow(0 2px 5px rgb(0, 0, 0));
+}
+
+.numbers p{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.description{
+    margin-top: 10px;
+}
+
+.description p{
+    display: block;
+    font-family:  sans-serif;
+    background-color: #22152C;
+    padding: 40px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.383));
+    
+}
+/* fondo : 22152C */

@@ -1,0 +1,31 @@
+.containerPaginate{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .paginado {
+      display: flex;
+    }
+    
+    .pageItem{
+        list-style: none;
+        cursor: pointer;
+    }
+  
+    .pageLink {
+      color: white;
+      float: left;
+      padding: 4px 8px;
+      text-decoration: none;
+    
+    }
+    
+    .pageLink .active {
+      background-color: white;
+      color: #5821A9;
+    }
+    
+    .pageLink:hover:not(.active) {
+      background-color: #5821A9;
+      color: #eee;
+    }

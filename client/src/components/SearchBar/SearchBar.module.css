@@ -1,0 +1,31 @@
+.containerSearch{
+    width: 100%;
+    background-color: #140C1A;
+    padding: 10px ;
+    margin: 30px 0;
+    clip-path: polygon(6% 0,100% 0,100% 100%,0 100%,0 32%);
+}
+
+.btn{
+border: none;
+background-color: transparent;
+cursor: pointer;
+}
+
+.search{
+    background-color: #140C1A;
+    padding: 8px;
+    width: 200px;
+    color:white;
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+}
+
+.search:focus{
+    outline: none;
+}
+
+.icon{
+    color: white;
+}

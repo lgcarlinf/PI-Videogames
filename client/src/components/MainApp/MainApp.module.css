@@ -1,27 +1,101 @@
-.containerMain{
+.container{
     position: relative;
-    display: flex;
-    
+    display: flex; 
 }
 
 .sideBar{
-    position: absolute;
+    width: 350px;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1D1024;
-    width: 25%;
-    border: 1px solid black;
+    background: url('../../assets/bg-alter.jpg');
+    background-size: cover;
     height: 100vh;
 }
 
 .main{
-    width: 75%;
-    border: 1px solid black;
+    margin-left: 350px;
+    z-index: 999;
+    background-color: #1B0F23;
+}
 
+.bg{
+    background-color: #1B0F23;
 }
 
 .logoImg{
     width: 140px;
     height: 210px;
+}
+
+.header{
+    position: relative;
+}
+
+.headerBg{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.textHeader{
+    color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50px;
+    top: 0;
+    left: 50px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bolder;
+    margin-top: 50px;
+    padding-left: 20px;
+    word-spacing: 1px;
+}
+
+.textHeader p{
+    font-weight: bolder;
+    margin: 0;
+}
+
+.textHeader h1{
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 65px;
+}
+
+.barra{
+    position: absolute;
+    transform: rotate(90deg);
+    background-color: white;
+    padding: 3px;
+    width: 70px;
+    left: -50px;
+    top: 40px;
+    
+}
+
+/*Body*/
+
+.tittle{
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    padding-left: 15px;
+    border-left: 4px solid #5821A9;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+.containerCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background: url('../../assets/bg-alter.jpg');
+}
+
+.textLink{
+    text-decoration: none;
 }

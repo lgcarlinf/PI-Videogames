@@ -1,0 +1,48 @@
+
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.select{
+    position: relative;
+}
+
+.button{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: #140C1A;
+    color: white;
+    clip-path: polygon(12% 0, 0 40%, 0 100%, 89% 99%, 100% 50%, 100% 0%);
+    padding: 18px 25px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.button:hover{
+    background: #5821A9;
+}
+
+.options{
+    text-align: center;
+    height: auto;
+    background-color: #140c1ace;
+    position: absolute;
+    width: 100%;
+    border: 2px solid #5821A9; 
+    color: white;
+    z-index: 999;
+}
+
+.option{
+    width: 100%;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
