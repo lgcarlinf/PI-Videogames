@@ -126,6 +126,10 @@
     font-weight: bolder;
 }
 
+.rating,.date,.generos,.plataformas{
+    margin: 0 5px;
+}
+
 .description{
     margin-top: 10px;
 }

@@ -3,7 +3,7 @@ const { Videogame,Genero } = require("../db");
 require('dotenv').config();
 const {KEY} = process.env;
 
-const getApiInfoNextPages = async ()=>{
+/* const getApiInfoNextPages = async ()=>{
 
     try {
         let promises = [2,3,4,5].map(async (e)=> await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=${e}`) )
@@ -33,13 +33,20 @@ const getApiInfoNextPages = async ()=>{
         console.log(error)
     }
    
-}
+} */
 
 const getApiInfo = async ()=>{
     
-    const apiUrl = await axios.get(`https://api.rawg.io/api/games?key=${KEY}`)
-    const apiJson = apiUrl.data
-     const apiInfo = await apiJson.results.map((game)=>{
+    const apiUrlOne = await axios.get(`https://api.rawg.io/api/games?key=${KEY}`)
+    const apiUrlTwo = await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=2`)
+    const apiUrlThree = await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=3`)
+    const apiUrlFour = await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=4`)
+    const apiUrlFive = await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=5`)
+
+    let dat = await Promise.all([apiUrlOne,apiUrlTwo,apiUrlThree,apiUrlFour,apiUrlFive])
+    let games = dat[0].data.results.concat(dat[1].data.results).concat(dat[2].data.results).concat(dat[3].data.results).concat(dat[4].data.results)
+
+     const apiInfo = games.map((game)=>{
         
         return{
             id:game.id,
@@ -77,9 +84,8 @@ module.exports={
 
   getAllVideoGames: async ()=>{
     const apiInfo  = await getApiInfo();
-    const getInfoNextPages = await getApiInfoNextPages();
     const dbInfo = await getDbInfo();
-    const infoTotal = apiInfo.concat(dbInfo).concat(getInfoNextPages);
+    const infoTotal = apiInfo.concat(dbInfo);
 
     return infoTotal
 },
@@ -92,7 +98,7 @@ module.exports={
         return  {
                 id:videogame.id,
                 name: videogame.name,
-                description: videogame.description,
+                description: videogame.description_raw,
                 date: videogame.released,
                 img: videogame.background_image,
                 genre : videogame.genres.map(g=>g.name), 

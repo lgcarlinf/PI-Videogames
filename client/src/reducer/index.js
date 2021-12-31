@@ -1,8 +1,9 @@
 
 const initialState = {
-    allvideogames:[],
+    allVideogames:[],
     videogames:[],
     details:[],
+    genres:[],
     loader: true
 
 }
@@ -15,7 +16,7 @@ function rootReducer (state=initialState,action){
             return{
                 ...state,
                 videogames: action.payload,
-                allvideogames: action.payload
+                allVideogames: action.payload
             }
         
         case 'GET_NAME_VIDEOGAMES':
@@ -26,7 +27,7 @@ function rootReducer (state=initialState,action){
         
         case 'ORDER_BY_NAME':
             let nameFiltered =
-            action.payload == 'A-Z'
+            action.payload === 'A-Z'
               ? state.videogames.sort((a, b) => {
                   if (a.name > b.name) {
                     return 1;
@@ -68,6 +69,30 @@ function rootReducer (state=initialState,action){
             details: action.payload,
           }
         
+        case 'GET_GENRES':
+          const genres = action.payload.map(g=>g.name)
+          return{
+            ...state,
+            genres
+          }
+
+        case 'ORDER_BY_GENRE':
+          const games= state.allVideogames
+          const filterGender = games.filter(v=> v.genre ? v.genre.includes(action.payload) === true : 'none')
+          //fix 
+          return{
+            ...state,
+            videogames: filterGender
+          } 
+
+        case 'ORDER_BY_CREATED':
+          const allgames = state.allVideogames
+          const filterDb = action.payload === 'ALL' ? allgames : allgames.filter(g=> g.createdInDb === true)
+          
+          return{
+            ...state,
+            videogames : filterDb
+          }
 
         default: return state
     }

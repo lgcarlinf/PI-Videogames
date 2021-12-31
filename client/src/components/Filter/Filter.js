@@ -3,16 +3,12 @@ import styles from "./Filter.module.css";
 
 export const Filter = ({nameFilter,filter,funtion}) => {
   const [isActive, setIsActive] = useState(false);
-  
 
     const handleClickSelect = (e) =>{
         e.preventDefault()
         funtion(e)
         setIsActive(false)
-      
     }
-
- 
 
   return (
     <div className={styles.container}>

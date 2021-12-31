@@ -5,6 +5,7 @@ import { getDetails } from "../../actions";
 import styles from "./Videogame.module.css";
 import crown from "../../assets/crown.png";
 import img from "../../assets/img-2.png";
+import { Loader } from "../Loader/Loader";
 
 export const Videogame = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ export const Videogame = () => {
   const platform = myVideogame.platform
     ? myVideogame.platform.join(" - ")
     : " ";
-  const genres = myVideogame.genre ? myVideogame.genre.join(" - ") : " ";
+  /*   let genres= myVideogame.genre ? 
+  myVideogame?.genre.join(' - ') : myVideogame && myVideogame.Generos.map(gen=>gen.name) */
+
   return (
     <div className={styles.containerPage}>
       <Link to="/videogame" className={styles.btnBack}>
@@ -48,7 +51,16 @@ export const Videogame = () => {
           </div>
           <div className={styles.generos}>
             <h4>GENRES</h4>
-            <p> {genres} </p>
+            <p>
+              {" "}
+              {myVideogame.Generos
+                ? myVideogame?.Generos.map((gen, i) => (
+                    <span key={i}>{gen.name} </span>
+                  ))
+                : myVideogame?.genre.map((gen, i) => (
+                    <span key={i}>{gen}</span>
+                  ))}{" "}
+            </p>
           </div>
           <div className={styles.plataformas}>
             <h4>PLATFORMS</h4>
@@ -58,8 +70,9 @@ export const Videogame = () => {
       </div>
       <div className={styles.description}>
         <h2>Description</h2>
-     <p>   {myVideogame.description}</p>
+        <p> {myVideogame.description}</p>
       </div>
+      
     </div>
   );
 };

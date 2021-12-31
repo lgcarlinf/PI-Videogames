@@ -5,7 +5,7 @@ const {KEY} = process.env;
 const { Router } = require("express");
 const { restart } = require('nodemon');
 const router = Router();
-const { Videogame,Genero ,Videogame_Genero} = require("../db");
+const { Videogame,Genero } = require("../db");
 const{getAllVideoGames,getVideoGameById,getDbInfo} =require('../routes/controllers')
 
 router.get('/',async (req,res)=>{
@@ -39,11 +39,11 @@ router.get('/:idVideogame',async (req,res)=>{
             return res.json(videogameApi)
         }else{
             const videogameDb = await Videogame.findOne({
-                where:{
+                where: {
                     id:idVideogame
                 },
                 include:{
-                    model:Genero
+                    model: Genero
                 }
             }) 
             return res.json(videogameDb)
@@ -68,7 +68,7 @@ router.post('/',async(req,res)=>{
             platform
         })
 
-        await createVideogame.setGeneros(genero)
+        await createVideogame.addGeneros(genero)
         res.json({msg:'se creo exitosamente'})
     } catch (error) {
         console.log(error)

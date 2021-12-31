@@ -30,14 +30,29 @@
 
 .options{
     text-align: center;
-    height: auto;
+    max-height: 105px;
     background-color: #140c1ace;
     position: absolute;
     width: 100%;
     border: 2px solid #5821A9; 
     color: white;
     z-index: 999;
+    overflow-y: scroll;
 }
+
+.options::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  .options::-webkit-scrollbar-track {
+    background: #190E21;        /* color of the tracking area */
+  }
+  
+  .options::-webkit-scrollbar-thumb {
+    background-color: #7228E2;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #190E21;  /* creates padding around scroll thumb */
+  }
 
 .option{
     width: 100%;
@@ -45,4 +60,10 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+      
+}
+
+.filter{
+    overflow-y: scroll;
+    height: 250px;
 }

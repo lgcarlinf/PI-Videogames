@@ -54,3 +54,28 @@ export function getDetails(payload){
   
     }
 }
+
+export function getGenres(){
+    return async function(dispatch){
+        const json = await axios('http://localhost:3001/genres')
+        return dispatch({
+            type:'GET_GENRES',
+            payload: json.data
+        })
+    }
+}
+
+export function orderByGenre(payload){
+    return{
+        type: 'ORDER_BY_GENRE',
+        payload
+    }
+}
+
+export function orderByCreated(payload){
+    return{
+        type: 'ORDER_BY_CREATED',
+        payload
+    }
+
+}
