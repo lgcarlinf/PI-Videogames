@@ -18,8 +18,7 @@ router.get('/',async (req,res)=>{
           if(videogamesName.length==''){
              videogamesName = gamesDb.filter(v=>v.name.toLowerCase().includes(name.toLowerCase()))
           }
-        return /*  videogamesName.length ? */ res.json(videogamesName)/* :
-          res.json({msg:'No se encuentra el videojuego'}) */
+        return res.json(videogamesName)
       }
         return res.json(videogamesTotal)
       
@@ -38,15 +37,23 @@ router.get('/:idVideogame',async (req,res)=>{
         if(videogameApi){
             return res.json(videogameApi)
         }else{
-            const videogameDb = await Videogame.findOne({
-                where: {
+            const videogameDb = await Videogame.findOne({      
+            where: {
                     id:idVideogame
-                },
-                include:{
-                    model: Genero
-                }
+                }    
             }) 
-            return res.json(videogameDb)
+
+             let genre = await videogameDb.getGeneros(
+                {attributes:["name"],
+            through:{
+                attributes:[]
+            }}
+            ); 
+            genre = genre.map(g=>g.name)
+
+            const response= {...videogameDb.dataValues,genre}
+          res.json(response);
+        
         }
        
    } catch (error) {

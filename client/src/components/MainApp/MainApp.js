@@ -43,6 +43,7 @@ export const MainApp = () => {
     dispatch(getVideogames());
     dispatch(getGenres())
   }, [dispatch]);
+ 
 
   const handleFilterName = (e) => {
     e.preventDefault();
@@ -61,8 +62,6 @@ export const MainApp = () => {
   const handleFilterGenre = (e) => {
     e.preventDefault();
     dispatch(orderByGenre(e.target.value));
-    setCurrentPage(1);
-   
   }
 
   const handleFilterDb = (e) => {
@@ -71,6 +70,8 @@ export const MainApp = () => {
     setCurrentPage(1);
    
   }
+
+  console.log(allGenres)
 
   return (
     <div className={styles.container}>
@@ -116,6 +117,9 @@ export const MainApp = () => {
         <div className={styles.body}>
           <div className={styles.tittle}>
             <h2>All Videogames</h2>
+            <Link to={'/create'} className={styles.button}>
+            Create Videogame
+            </Link>
           </div>
           <Paginado
             videogamesPerPage={videogamesPerPage}

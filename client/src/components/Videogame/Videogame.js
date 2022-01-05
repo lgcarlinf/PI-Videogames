@@ -5,7 +5,8 @@ import { getDetails } from "../../actions";
 import styles from "./Videogame.module.css";
 import crown from "../../assets/crown.png";
 import img from "../../assets/img-2.png";
-import { Loader } from "../Loader/Loader";
+
+
 
 export const Videogame = () => {
   const dispatch = useDispatch();
@@ -13,15 +14,17 @@ export const Videogame = () => {
 
   useEffect(() => {
     dispatch(getDetails(id));
-  }, []);
+  }, [dispatch]);
 
   const myVideogame = useSelector((state) => state.details);
 
-  const platform = myVideogame.platform
-    ? myVideogame.platform.join(" - ")
+  const game = myVideogame
+  console.log(myVideogame);
+  const platform = game?.platform
+    ? game?.platform.join(" - ")
     : " ";
-  /*   let genres= myVideogame.genre ? 
-  myVideogame?.genre.join(' - ') : myVideogame && myVideogame.Generos.map(gen=>gen.name) */
+
+  
 
   return (
     <div className={styles.containerPage}>
@@ -32,34 +35,30 @@ export const Videogame = () => {
       <div className={styles.containerImg}>
         <img
           className={styles.imgVideogame}
-          src={myVideogame.img}
-          alt="img-videogame"
+          src={game.img ? game.img : "https://m.media-amazon.com/images/I/61-hTJfp3bL._SS500_.jpg"}
+          alt=""
         />
         <img className={styles.imgPhrase} src={img} alt="phrase" />
-        <h1 className={styles.nameVideogame}>{myVideogame.name}</h1>
+        <h1 className={styles.nameVideogame}>{game?.name}</h1>
       </div>
       <div className={styles.info}>
         <h2>Information</h2>
         <div className={styles.numbers}>
           <div className={styles.rating}>
             <h4>RATING</h4>
-            <p>{myVideogame.rating}</p>
+            <p>{game?.rating}</p>
           </div>
           <div className={styles.date}>
             <h4>DATE</h4>
-            <p>{myVideogame.date}</p>
+            <p>{game?.date}</p>
           </div>
           <div className={styles.generos}>
             <h4>GENRES</h4>
             <p>
-              {" "}
-              {myVideogame.Generos
-                ? myVideogame?.Generos.map((gen, i) => (
-                    <span key={i}>{gen.name} </span>
-                  ))
-                : myVideogame?.genre.map((gen, i) => (
-                    <span key={i}>{gen}</span>
-                  ))}{" "}
+            {game.genre?.map((genero) => ( 
+              <span key={genero.id}>{genero+' '}</span>
+            ))}
+             
             </p>
           </div>
           <div className={styles.plataformas}>
@@ -70,9 +69,8 @@ export const Videogame = () => {
       </div>
       <div className={styles.description}>
         <h2>Description</h2>
-        <p> {myVideogame.description}</p>
+        <p> {game?.description}</p>
       </div>
-      
     </div>
   );
 };

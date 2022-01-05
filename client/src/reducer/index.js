@@ -8,7 +8,6 @@ const initialState = {
 
 }
 
-
 function rootReducer (state=initialState,action){
 
     switch(action.type){
@@ -29,19 +28,19 @@ function rootReducer (state=initialState,action){
             let nameFiltered =
             action.payload === 'A-Z'
               ? state.videogames.sort((a, b) => {
-                  if (a.name > b.name) {
+                  if (a.name.toLowerCase() > b.name.toLowerCase()) {
                     return 1;
                   }
-                  if (b.name > a.name) {
+                  if (b.name.toLowerCase() > a.name.toLowerCase()) {
                     return -1;
                   }
                   return 0;
                 })
               : state.videogames.sort((a, b) => {
-                  if (a.name > b.name) {
+                  if (a.name.toLowerCase() > b.name.toLowerCase()) {
                     return -1;
                   }
-                  if (b.name > a.name) {
+                  if (b.name.toLowerCase() > a.name.toLowerCase()) {
                     return 1;
                   }
                   return 0;
@@ -78,8 +77,9 @@ function rootReducer (state=initialState,action){
 
         case 'ORDER_BY_GENRE':
           const games= state.allVideogames
-          const filterGender = games.filter(v=> v.genre ? v.genre.includes(action.payload) === true : 'none')
-          //fix 
+        
+           const filterGender = games.filter(v=> v.genre ? v.genre.includes(action.payload) === true : 'none') 
+        
           return{
             ...state,
             videogames: filterGender
@@ -87,7 +87,7 @@ function rootReducer (state=initialState,action){
 
         case 'ORDER_BY_CREATED':
           const allgames = state.allVideogames
-          const filterDb = action.payload === 'ALL' ? allgames : allgames.filter(g=> g.createdInDb === true)
+          const filterDb = action.payload === 'ALL' ? allgames : allgames.filter(g=> g.create === true)
           
           return{
             ...state,

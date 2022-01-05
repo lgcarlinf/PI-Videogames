@@ -24,10 +24,12 @@ export const Filter = ({nameFilter,filter,funtion}) => {
                 <input type='button' key={i} onClick={handleClickSelect } value={option} className={styles.option}/>
                
                ))
+               
            }
           </div>
         )}
       </div>
     </div>
   );
+
 };

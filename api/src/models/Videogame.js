@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
     date:{
       type:DataTypes.STRING,
     },
+
     rating:{
       type:DataTypes.DECIMAL,
 
@@ -32,6 +33,7 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull : false,
       defaultValue : true
-    }
+    },
+    
   });
 };

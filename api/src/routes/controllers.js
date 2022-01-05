@@ -3,38 +3,6 @@ const { Videogame,Genero } = require("../db");
 require('dotenv').config();
 const {KEY} = process.env;
 
-/* const getApiInfoNextPages = async ()=>{
-
-    try {
-        let promises = [2,3,4,5].map(async (e)=> await axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=${e}`) )
-  
-        response = await Promise.all(promises)
-        response = response.reduce( 
-            (prev,curr) => {
-                return prev.concat(curr.data.results);
-            },[]
-            
-        );
-        
-        const data = response.map(game=>{
-            return{
-                id: game.id,
-                name: game.name,
-                date: game.released,
-                img: game.background_image,
-                genre :  game.genres.map(gen=>gen.name),   
-                rating: game.rating,
-                platform : game.platforms.map(p=>p.platform.name) 
-            }
-        })
-
-        return data
-    } catch (error) {
-        console.log(error)
-    }
-   
-} */
-
 const getApiInfo = async ()=>{
     
     const apiUrlOne = await axios.get(`https://api.rawg.io/api/games?key=${KEY}`)
@@ -64,22 +32,60 @@ const getApiInfo = async ()=>{
 }
 
 const getDbInfo = async () =>{
-    return await Videogame.findAll({
+    const db = await Videogame.findAll({
         include:{
-            model:Genero          
+            model:Genero,
+            attributes:['name'],
+            through:{
+                attributes:[]
+            }
         }
     })
+
+    const dbGames = db.map((game)=>{
+        
+        return{
+            id:game.id,
+            name: game.name,
+            date: game.date,
+            img: game.background_image,
+            genre : game.Generos.map(g=>g.name), 
+            rating: game.rating,
+            platform : game.platform,
+            create: game.createdInDb
+        }
+    }) 
+    return dbGames
 }
 
 module.exports={
 
 
-    getDbInfo : async () =>{
-        return await Videogame.findAll({
+     getDbInfo: async () =>{
+        const db = await Videogame.findAll({
             include:{
-                model:Genero          
+                model:Genero,
+                attributes:['name'],
+                through:{
+                    attributes:[]
+                }
             }
         })
+    
+        const dbGames = db.map((game)=>{
+            
+            return{
+                id:game.id,
+                name: game.name,
+                date: game.date,
+                img: "https://media.comicbook.com/2020/05/games-out-this-week-john-wick-hex-1218649.jpeg?auto=webp",
+                genre : game.Generos.map(g=>g.name), 
+                rating: game.rating,
+                platform : game.platform,
+                create: game.createdInDb
+            }
+        }) 
+        return dbGames
     },
 
   getAllVideoGames: async ()=>{

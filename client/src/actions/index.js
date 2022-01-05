@@ -79,3 +79,17 @@ export function orderByCreated(payload){
     }
 
 }
+
+export function postVideogame(payload){
+    return async function(dispatch){
+        try {
+            const json = await axios.post('http://localhost:3001/videogame', payload)
+            return dispatch({
+                type: 'POST_VIDEOGAME',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
