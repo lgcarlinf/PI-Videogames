@@ -23,6 +23,7 @@ export const Form = () => {
   ];
   const [input, setInput] = useState({
     name: "",
+    age: "",
     genero: [],
     rating: "",
     description: "",
@@ -32,13 +33,14 @@ export const Form = () => {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (e) => {
     setInput({ 
         ...input,
          [e.target.name]: e.target.value 
         });
+        console.log(input.age)
   };
  
   const handleGenreChange = (e) => {
@@ -46,6 +48,7 @@ export const Form = () => {
         ...input,
         genero: [...input.genero, parseInt(e.target.value)],
       });
+      console.log(input.genero)
     };
 
     const handlePlatformChange = (e) => {
@@ -54,7 +57,7 @@ export const Form = () => {
             platform: [...input.platform, e.target.value],
           });
         };
-
+//feedback por cada campo del formulario
     const handleSubmit = (e) => {
         if(input.name === "" || input.rating === "" || input.description === "" || input.date === "" || input.platform.length === 0 || input.genero.length === 0){
           e.preventDefault();
@@ -67,6 +70,7 @@ export const Form = () => {
   
           setInput({
             name: "",
+            age: "",
             genero: [],
             rating: "",
             description: "",
@@ -94,6 +98,16 @@ export const Form = () => {
               value={input.name}
               onChange={handleChange}
             />
+          </div>
+          <div className={styles.age}>
+            <label htmlFor="age">Edad:</label>
+            <input 
+            name="age"
+            type="text"
+             id='age'
+             value={input.age}
+             onChange={handleChange}
+             />
           </div>
           <div className={styles.rating}>
             <label htmlFor="rating">Rating:</label>

@@ -14,7 +14,7 @@ export const Videogame = () => {
 
   useEffect(() => {
     dispatch(getDetails(id));
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   const myVideogame = useSelector((state) => state.details);
 

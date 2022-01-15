@@ -65,10 +65,11 @@ router.get('/:idVideogame',async (req,res)=>{
 
 router.post('/',async(req,res)=>{
     try {
-        const {name,description,date,rating,platform,genero}= req.body
+        const {name,age,description,date,rating,platform,genero}= req.body
 
         const createVideogame = await Videogame.create({
             name,
+            age,
             description,
             date,
             rating,

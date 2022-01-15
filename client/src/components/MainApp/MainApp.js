@@ -49,7 +49,7 @@ export const MainApp = () => {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
+    setOrden(` ${e.target.value}`);
   };
 
   const handleFilterRating = (e) => {
@@ -71,7 +71,7 @@ export const MainApp = () => {
    
   }
 
-  console.log(allGenres)
+/*   console.log(allGenres) */
 
   return (
     <div className={styles.container}>
